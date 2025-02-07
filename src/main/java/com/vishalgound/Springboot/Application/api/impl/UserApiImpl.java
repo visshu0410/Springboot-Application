@@ -19,7 +19,7 @@ import jakarta.ws.rs.QueryParam;
 @RestController
 @RequestMapping("/User")
 public class UserApiImpl {
-    private Map<String, User> userData = new HashMap<>();
+    public Map<String, User> userData = new HashMap<>();
 
     private Long nextUserId = 10L;
 

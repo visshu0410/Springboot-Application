@@ -42,12 +42,17 @@
 			<version>1.18.24</version>
 			<scope>provided</scope>
 		</dependency>
-
 		<!-- JaCoCo for code coverage -->
 		<dependency>
 			<groupId>org.jacoco</groupId>
 			<artifactId>jacoco-maven-plugin</artifactId>
 			<version>0.8.6</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter</artifactId>
+			<scope>test</scope>
 		</dependency>
 
 		<!-- Mockito (for unit testing) -->
