@@ -11,7 +11,7 @@ import org.springframework.context.ApplicationContext;
 class ApplicationTests {
 
     @Autowired
-    private ApplicationContext applicationContext; // ✅ Check if Spring Boot context loads correctly
+    private ApplicationContext applicationContext;
 
     @Test
     void contextLoads() {
