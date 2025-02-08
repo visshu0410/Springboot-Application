@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
+import com.vishalgound.Springboot.Application.Utils.CommonUtils;
+import com.vishalgound.Springboot.Application.constants.CommonConstants;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -25,7 +27,7 @@ public class UserApiImpl {
 
     @PostMapping("/addUser")
     public String addUser(@RequestBody User user) {
-        String key = user.getMobileNumber() + "$" + user.getEmail();
+        String key = user.getMobileNumber() + CommonConstants.DOLLAR + user.getEmail();
         if (Objects.nonNull(userData.get(key))) {
             return "User Already Exists";
         }
@@ -43,7 +45,7 @@ public class UserApiImpl {
     @GetMapping("/getUser")
     public User getUserByEmailIdAndMobileNumber(@QueryParam("mobileNumber") String mobileNumber,
             @QueryParam("email") String email) {
-        String key = mobileNumber + "$" + email;
+        String key = mobileNumber + CommonConstants.DOLLAR + email;
 
         if (Objects.isNull(userData.get(key))) {
             return null;
@@ -59,7 +61,7 @@ public class UserApiImpl {
     @PatchMapping("/update/{id}")
     public User updateUser(@PathVariable Long id, @QueryParam("mobile") String mobileNumber,
             @QueryParam("email") String email, @RequestBody Long newMobileNumber) {
-        String key = mobileNumber + "$" + email;
+        String key = CommonUtils.makeKey(mobileNumber, email);
         User user = userData.get(key);
 
         if (Objects.isNull(user)) {
